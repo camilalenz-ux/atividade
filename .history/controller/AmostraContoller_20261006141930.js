@@ -1,0 +1,1 @@
+import {Amostras} from "../model/Amostra"
