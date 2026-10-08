@@ -1,4 +1,4 @@
-import {Amostras} from '../model/Amostras.js'
+import 
 export function cadastrarAmostra(req, res) {
     res.status(201).json({
         mensagem: "Amostra cadastrada com sucesso"

@@ -1,12 +1,13 @@
 import express from "express";
-import amostraRoutes from "./route/amostrasRoute.js";
-import setorRoutes from "./route/setorRoutes.js";
+import router from "./route/amostrasRoute.js";
+import setorRoute from "./route/setorRoute.js";
 
 const app = express();
 
 app.use(express.json());
 
-app.use("/amostras", amostraRoutes);
+app.use("/amostras", router);
+
 app.use("/setores", setorRoutes);
 
 app.listen(3001, () => {
