@@ -1,81 +1,91 @@
 import { Setor } from "../model/Setor.js";
+import { cadastrar, listar, buscarPorIndice, atualizar, deletar } from "../repository/setorRepository.js"
 
-import {
-    cadastrar,
-    listar,
-    buscarPorIndice,
-    atualizar,
-    excluir
-} from "../repository/setorRepository.js";
 
-export function cadastrarSetor(req, res) {
+export function cadastrarSetor(req, res){
+    const {nome, sigla, responsavel, ramal} = req.body
 
-    const { nome, sigla, responsavel, ramal } = req.body;
+    const setor = new Setor(nome, sigla, responsavel, ramal);
 
-    const setor = new Setor(
-        nome,
-        sigla,
-        responsavel,
-        ramal
-    );
+    cadastrar(setor)
 
-    cadastrar(setor);
-
-    res.status(201).json({
-        mensagem: "Setor cadastrado com sucesso"
-    });
+    res.status(201).json(setor);
 }
 
-export function listarSetores(req, res) {
+export function listarSetores(req, res){
+    const setor = listar();
 
-    const setores = listar();
-
-    res.status(200).json(setores);
+    res.status(200).json(setor)
 }
 
-export function buscarSetor(req, res) {
 
-    const indice = req.params.indice;
+export function atualizarSetor(req, res){
+    const indice = Number(req.params.indice);
 
     const setor = buscarPorIndice(indice);
 
-    if (!setor) {
+    if(!setor) {
         return res.status(404).json({
             mensagem: "Setor não encontrado"
-        });
+        })
     }
+
+    const {nome, sigla, responsavel, ramal} = req.body;
+
+    if(nome !== undefined){
+        setor.nome = nome
+    }
+
+    if(sigla !== undefined){
+        setor.sigla = sigla
+    }
+
+    if(responsavel !== undefined){
+        setor.responsavel = responsavel;
+    }
+
+    if(ramal !== undefined){
+        setor.ramal = ramal
+    }
+
+    atualizar(indice, setor);
 
     res.status(200).json(setor);
 }
 
-export function atualizarSetor(req, res) {
+export function deletarSetor(req, res){
+    const indice = Number(req.params.indice);
 
-    const indice = req.params.indice;
+    console.log(indice);
 
-    const atualizado = atualizar(indice, req.body);
+    const setor = buscarPorIndice(indice);
 
-    if (!atualizado) {
+    console.log(setor);
+        
+    if (!setor){
         return res.status(404).json({
-            mensagem: "Setor não encontrado"
-        });
+            mensagem: "Setor nao encontrado"
+        })
     }
 
+    deletar(indice);
+
     res.status(200).json({
-        mensagem: "Setor atualizado com sucesso"
+        mensagem: "Amostra excluido com sucesso"
     });
 }
 
-export function excluirSetor(req, res) {
 
-    const removido = excluir(req.params.indice);
+export function buscarSetorPorIndice(req, res){
+    const indice = Number(req.params.indice);
 
-    if (!removido) {
+    const setor = buscarPorIndice(indice);
+
+    if(!setor){
         return res.status(404).json({
-            mensagem: "Setor não encontrado"
+            mensagem: "Setor nao encontrado"
         });
     }
 
-    res.status(200).json({
-        mensagem: "Setor excluído com sucesso"
-    });
+    res.status(200).json(setor)
 }

@@ -16,3 +16,6 @@ export function deletar(indice) {
     amostras.splice(indice, 1);
 }
 
+export function atualizar(indice, amostra) {
+    amostras[indice] = amostra
+}

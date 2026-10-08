@@ -1,19 +1,18 @@
 import express from "express";
-
-import {
-    cadastrarSetor,
+import { cadastrarSetor,
     listarSetores,
-    buscarSetor,
-    atualizarSetor,
-    excluirSetor
+    buscarSetorPorIndice,
+    deletarSetor,
+    atualizarSetor
 } from "../controller/setorController.js";
 
 const router = express.Router();
 
-router.post("/", cadastrarSetor);
-router.get("/", listarSetores);
-router.get("/:indice", buscarSetor);
-router.patch("/:indice", atualizarSetor);
-router.delete("/:indice", excluirSetor);
+
+router.post("/", cadastrarSetor)
+router.get("/", listarSetores)
+router.patch("/:indice", buscarSetorPorIndice )
+router.delete("/:indice", deletarSetor)
+router.get("/:indice", atualizarSetor)
 
 export default router;
