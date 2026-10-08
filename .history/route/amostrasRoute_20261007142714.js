@@ -10,9 +10,9 @@ import {
 
 const router = express.Router();
 
-router.post("/", cadastrarAmostra); 
-router.get("/", listarAmostras);
-router.get("/:id", buscarAmostra);
+    router.post("/", cadastrarAmostra); 
+     router.get("/", listarAmostras);
+       router.get("/:id", buscarAmostra);
 router.put("/:id", atualizarAmostra);
 router.delete("/:id", deletarAmostra);
 

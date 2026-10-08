@@ -10,7 +10,7 @@ import {
 
 const router = express.Router();
 
-router.post("/", cadastrarAmostra); 
+    router.post("/", cadastrarAmostra); 
 router.get("/", listarAmostras);
 router.get("/:id", buscarAmostra);
 router.put("/:id", atualizarAmostra);

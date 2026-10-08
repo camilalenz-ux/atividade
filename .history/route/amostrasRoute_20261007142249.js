@@ -1,17 +1,17 @@
 import express from "express";
 
 import {
-  cadastrarAmostra,
-  listarAmostras,
-  buscarAmostra,
-  atualizarAmostra,
-  deletarAmostra
+    cadastrarAmostra,
+    listarAmostras,
+    buscarAmostra,
+    atualizarAmostra,
+    deletarAmostra
 } from "../controller/amostrasController.js";
 
 const router = express.Router();
 
-router.post("/", cadastrarAmostra); 
-router.get("/", listarAmostras);
+router.post("/", cadastrarAmostra);
+router.get("/",  listarAmostra);
 router.get("/:id", buscarAmostra);
 router.put("/:id", atualizarAmostra);
 router.delete("/:id", deletarAmostra);

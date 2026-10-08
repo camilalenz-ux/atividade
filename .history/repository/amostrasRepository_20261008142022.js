@@ -15,4 +15,3 @@ export function buscarPorIndice(indice) {
 export function deletar(indice) {
     amostras.splice(indice, 1);
 }
-

@@ -1,0 +1,19 @@
+import { Amostra } from "../model/Amostras.js";
+
+const produtos = []
+
+export function cadastrar(Amostra){
+    Amostras.push(Amostras);
+}
+
+export function listar(){
+    return amostras;
+}
+
+export function buscarPorIndice(indice) {
+    Amostras[indice] = Amostras;
+}
+
+export function deletar(indice){
+    Amostras.splice(indice, 1)
+}
