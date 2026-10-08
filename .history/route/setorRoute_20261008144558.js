@@ -8,7 +8,7 @@ import {
     excluirSetor
 } from "../controller/setorController.js";
 
-const router = express.Router();
+const router = express.rawouter();
 
 router.post("/", cadastrarSetor);
 router.get("/", listarSetores);
